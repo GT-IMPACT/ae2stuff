@@ -38,10 +38,10 @@ if (project.hasProperty('buildnum')) {
     ext.simpleVersion = "${config.ae2stuff.version}-DEV"
 }
 
-version = simpleVersion + '-mc' + config.minecraft.version
+version = "1.1.0-"+ config.minecraft.version+"-universal"
 
 group = "net.bdew"
-archivesBaseName = "ae2stuff-rv3"
+archivesBaseName = "ae2stuff-GWPP-Edition"
 
 minecraft {
     version = "${config.minecraft.version}-${config.forge.version}"
@@ -59,14 +59,6 @@ repositories {
         name = "chickenbones"
         url = "http://chickenbones.net/maven"
     }
-    maven {
-        name "waila"
-        url "http://mobiusstrip.eu/maven"
-    }
-    ivy {
-        name "CoFHLib"
-        artifactPattern "http://addons-origin.cursecdn.com/files/${config.cofhlib.cf}/[module]-[revision](-[classifier])(.[ext])"
-    }
     ivy {
         name "BuildCraft"
         artifactPattern "http://www.mod-buildcraft.com/releases/BuildCraft/[revision]/[module]-[revision]-[classifier].[ext]"
@@ -81,15 +73,6 @@ dependencies {
     compile "codechicken:CodeChickenCore:${config.minecraft.version}-${config.ccc.version}:dev"
 
     compile "com.mod-buildcraft:buildcraft:${config.buildcraft.version}:dev"
-    compile ":CoFHLib:${config.cofhlib.version}:dev@jar"
-
-    compile module("mcp.mobius.waila:Waila:${config.waila.version}_${config.minecraft.version}") {
-        transitive = false // WAILA is depending on an invalid combination of CCC/NEI that doesn't run...
-    }
-
-    compile module("appeng:appliedenergistics2:${config.ae2.version}:dev") {
-        transitive = false // AE2 Depends on a lot of crap, some of it not readily available anywhere that i know
-    }
 }
 
 import org.apache.tools.ant.filters.ReplaceTokens

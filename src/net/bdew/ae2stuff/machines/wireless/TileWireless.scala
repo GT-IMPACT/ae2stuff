@@ -72,13 +72,22 @@ class TileWireless extends TileDataSlots with GridTile with VariableIdlePower {
       val dy = this.yCoord - that.yCoord
       val dz = this.zCoord - that.zCoord
       val dd = dx * dx + dy * dy + dz * dz
-
       val p1 = 1
-      val p2 = 20 * dd
+      val p2 = 501
+      val p3 = 501 + 20 * dd
 
         def t(): Int = {
-          if (dd<=4096) p1 else p2
+          if (dd <= 4096) t1() else t2()
         }
+
+          def t1(): Int = {
+            if (dd <= 4096) p1 else t2()
+          }
+          def t2(): Int = {
+            if (dd <= 65536) p2 else p3
+          }
+
+
 
       val q = t()
 
