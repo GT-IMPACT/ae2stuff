@@ -17,7 +17,9 @@ import net.bdew.lib.{DecFormat, Misc}
 import net.minecraft.entity.player.EntityPlayerMP
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
+import net.minecraft.util.EnumChatFormatting
 import net.minecraft.world.World
+
 
 object WailaWirelessDataProvider extends BaseDataProvider(classOf[TileWireless]) {
   override def getNBTTag(player: EntityPlayerMP, te: TileWireless, tag: NBTTagCompound, world: World, x: Int, y: Int, z: Int): NBTTagCompound = {
@@ -27,8 +29,7 @@ object WailaWirelessDataProvider extends BaseDataProvider(classOf[TileWireless])
         "connected" -> true,
         "target" -> pos,
         "channels" -> (if (te.connection != null) te.connection.getUsedChannels else 0),
-        "power" -> te.getIdlePowerUsage
-      ))
+        "power" -> te.getIdlePowerUsage))
     } else {
       tag.setTag("wireless_waila", NBT("connected" -> false))
     }
@@ -42,11 +43,11 @@ object WailaWirelessDataProvider extends BaseDataProvider(classOf[TileWireless])
         val pos = BlockRef.fromNBT(data.getCompoundTag("target"))
         List(
           Misc.toLocalF("ae2stuff.waila.wireless.connected", pos.x, pos.y, pos.z),
-          Misc.toLocalF("ae2stuff.waila.wireless.channels", data.getInteger("channels")),
-          Misc.toLocalF("ae2stuff.waila.wireless.power", DecFormat.short(data.getDouble("power")))
+          EnumChatFormatting.GREEN+Misc.toLocalF("ae2stuff.waila.wireless.channels", data.getInteger("channels")),
+          Misc.toLocalF("ae2stuff.waila.wireless.power",  EnumChatFormatting.RED+ DecFormat.short(data.getDouble("power" )))
         )
       } else {
-        List(Misc.toLocal("ae2stuff.waila.wireless.notconnected"))
+        List(EnumChatFormatting.RED+Misc.toLocal("ae2stuff.waila.wireless.notconnected"))
       }
     } else List.empty
   }

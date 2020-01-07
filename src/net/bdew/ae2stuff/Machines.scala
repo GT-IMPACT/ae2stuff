@@ -20,4 +20,5 @@ object Machines extends MachineManager(Tuning.getSection("Machines"), AE2Stuff.g
   registerMachine(MachineGrower)
   registerMachine(MachineInscriber)
   registerMachine(MachineWireless)
+
 }

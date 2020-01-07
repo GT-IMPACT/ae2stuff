@@ -22,6 +22,7 @@ import net.minecraft.util.IIcon
 import net.minecraft.world.World
 
 object BlockWireless extends SimpleBlock("Wireless", MachineMaterial) with HasTE[TileWireless] with BlockWrenchable {
+
   override val TEClass = classOf[TileWireless]
 
   setHardness(1)
