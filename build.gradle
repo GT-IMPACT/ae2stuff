@@ -38,10 +38,10 @@ if (project.hasProperty('buildnum')) {
     ext.simpleVersion = "${config.ae2stuff.version}-DEV"
 }
 
-version = "1.7.10-1.1.1-universal"
+version = "1.1.2-impact"
 
 group = "net.bdew"
-archivesBaseName = "ae2stuff-GWPP-Edition"
+archivesBaseName = "ae2stuff"
 
 minecraft {
     version = "${config.minecraft.version}-${config.forge.version}"
