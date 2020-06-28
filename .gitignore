@@ -81,3 +81,9 @@ gradlew.bat
 
 # Linux
 *~
+*.cfg
+/config
+/logs
+/saves
+
+usernamecache.json

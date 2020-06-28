@@ -44,7 +44,7 @@ object WailaWirelessDataProvider extends BaseDataProvider(classOf[TileWireless])
         List(
           Misc.toLocalF("ae2stuff.waila.wireless.connected", pos.x, pos.y, pos.z),
           EnumChatFormatting.GREEN+Misc.toLocalF("ae2stuff.waila.wireless.channels", data.getInteger("channels")),
-          Misc.toLocalF("ae2stuff.waila.wireless.power",  EnumChatFormatting.RED+ DecFormat.short(data.getDouble("power" )))
+          Misc.toLocalF("ae2stuff.waila.wireless.power",  EnumChatFormatting.RED+ DecFormat.short(data.getDouble("power" ) *2 ))
         )
       } else {
         List(EnumChatFormatting.RED+Misc.toLocal("ae2stuff.waila.wireless.notconnected"))
