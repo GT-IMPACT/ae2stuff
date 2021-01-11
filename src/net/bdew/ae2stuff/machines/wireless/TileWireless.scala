@@ -22,6 +22,7 @@ import net.minecraft.block.Block
 import net.minecraft.item.ItemStack
 import net.minecraft.world.World
 
+
 class TileWireless extends TileDataSlots with GridTile with VariableIdlePower {
   val cfg = MachineWireless
 
@@ -82,8 +83,10 @@ class TileWireless extends TileDataSlots with GridTile with VariableIdlePower {
 
       if (power.equals(-1)) return false
 
-      this.setIdlePowerUse(power)
-      that.setIdlePowerUse(power)
+      val powerFinal = power / 2
+
+      this.setIdlePowerUse(powerFinal)
+      that.setIdlePowerUse(powerFinal)
       worldObj.setBlockMetadataWithNotify(this.xCoord, this.yCoord, this.zCoord, 1, 3)
       worldObj.setBlockMetadataWithNotify(that.xCoord, that.yCoord, that.zCoord, 1, 3)
       return true
